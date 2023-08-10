@@ -2,7 +2,10 @@ import React, { useEffect, useMemo, useRef, useState } from 'react'
 import useSWR from 'swr';
 
 const GlobalStateContext = React.createContext({ users: [], count: 0})
-const fetcher = (url) => fetch(url).then((res) => res.json());
+const fetcher = (url) => fetch(url).then((res) => {
+    console.log("api called")
+    res.json()
+});
 
 export function GlobalStateProvider(props){
     const { data: users, error, mutate: mutateUsers } = useSWR(
